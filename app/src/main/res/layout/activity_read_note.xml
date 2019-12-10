@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/text_and_icons"
+    android:padding="8dp"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar_readNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Read Note"
+        android:background="@color/backgroud_welcome"
+        app:titleTextColor="@color/text_and_icons"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/colorAccent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:id="@+id/read_dateTv"
+                android:textColor="@color/text_and_icons"
+                android:layout_gravity="start"
+                android:text="date"
+                android:textSize="10dp"/>
+
+        <EditText
+            android:id="@+id/read_noteTv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:inputType="textMultiLine"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="16dp"
+            android:cursorVisible="false"
+            android:textColorHint="@color/text_and_icons"
+            android:gravity="start"/>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/checkBtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/backgroud_welcome"
+            android:src="@drawable/ic_check_"/>
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/notifBtn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/backgroud_welcome"-->
+<!--            android:src="@drawable/ic_notifications_black_24dp"/>-->
+
+        <ImageButton
+            android:id="@+id/shareBtn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/backgroud_welcome"
+            android:src="@drawable/ic_share_black_24dp"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
