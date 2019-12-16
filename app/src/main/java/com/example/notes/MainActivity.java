@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         startAction("all");
 
     }
-
     public void addNewNote(View view) {
         startAction("add");
 

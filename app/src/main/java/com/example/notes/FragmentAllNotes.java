@@ -2,7 +2,6 @@ package com.example.notes;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -12,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,34 +35,32 @@ public class FragmentAllNotes extends Fragment implements CustomListenerGetNote 
     private View view;
     private RecyclerAdapter adapter;
     private List<Note> allNotes;
-    private EditText searchText;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view=inflater.inflate(R.layout.fragmetn_all_notes,container,false);
+        view = inflater.inflate(R.layout.fragmetn_all_notes, container, false);
 
-        Toolbar toolbar=view.findViewById(R.id.all_note_toolbar);
+        Toolbar toolbar = view.findViewById(R.id.all_note_toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
 
-        allNotes=DataBase.getNoteDbInstance(getContext()).myDao().getAllNotes();
+        allNotes = DataBase.getNoteDbInstance(getContext()).myDao().getAllNotes();
 
-        RecyclerView recyclerView=view.findViewById(R.id.recyclerView_allNotes);
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),2);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_allNotes);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
 
-        adapter=new RecyclerAdapter(allNotes,getContext());
+        adapter = new RecyclerAdapter(allNotes, getContext());
         recyclerView.setAdapter(adapter);
 
         adapter.setOnCustomListener(this);
 
         helper.attachToRecyclerView(recyclerView);
-
 
         return view;
     }
@@ -72,10 +68,10 @@ public class FragmentAllNotes extends Fragment implements CustomListenerGetNote 
     @Override
     public void getNoteForPosition(int position) {
 
-        Intent intent=new Intent(getContext(),ReadNoteActivity.class);
-        intent.putExtra("Note item text",allNotes.get(position).getNoteDescripiton());
-        intent.putExtra("Note item date",allNotes.get(position).getDate());
-        intent.putExtra("Note id",allNotes.get(position).getId());
+        Intent intent = new Intent(getContext(), ReadNoteActivity.class);
+        intent.putExtra("Note item text", allNotes.get(position).getNoteDescripiton());
+        intent.putExtra("Note item date", allNotes.get(position).getDate());
+        intent.putExtra("Note id", allNotes.get(position).getId());
         startActivity(intent);
 
     }
@@ -86,7 +82,7 @@ public class FragmentAllNotes extends Fragment implements CustomListenerGetNote 
         inflater.inflate(R.menu.search_layout, menu);
 
         MenuItem itemSearch = menu.findItem(R.id.searchBtn);
-        SearchView searchView= (SearchView) itemSearch.getActionView();
+        SearchView searchView = (SearchView) itemSearch.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -100,7 +96,7 @@ public class FragmentAllNotes extends Fragment implements CustomListenerGetNote 
                 return false;
             }
 
-            MenuItem itemDelete =menu.findItem(R.id.delete_allBtn).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            MenuItem itemDelete = menu.findItem(R.id.delete_allBtn).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
 
@@ -146,8 +142,8 @@ public class FragmentAllNotes extends Fragment implements CustomListenerGetNote 
         });
     }
 
-    ItemTouchHelper helper=new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
-            (0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+    ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
+            (0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;

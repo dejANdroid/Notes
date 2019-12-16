@@ -2,11 +2,7 @@ package com.example.notes;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes.RoomDb.DataBase;
@@ -29,10 +24,10 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyHolder> implements Filterable {
 
-    List<Note> mList;
+    private List<Note> mList;
     List<Note> getListSearch;
-    CustomListenerGetNote mListener;
-    Context context;
+   private CustomListenerGetNote mListener;
+   private Context context;
 
     public void setOnCustomListener(CustomListenerGetNote mListener) {
         this.mListener = mListener;

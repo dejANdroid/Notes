@@ -36,8 +36,8 @@
                 android:id="@+id/read_dateTv"
                 android:textColor="@color/text_and_icons"
                 android:layout_gravity="start"
-                android:text="date"
-                android:textSize="10dp"/>
+                android:text="@string/date"
+                android:textSize="10sp"/>
 
         <EditText
             android:id="@+id/read_noteTv"
@@ -72,14 +72,6 @@
             android:layout_weight="1"
             android:background="@color/backgroud_welcome"
             android:src="@drawable/ic_check_"/>
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/notifBtn"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@color/backgroud_welcome"-->
-<!--            android:src="@drawable/ic_notifications_black_24dp"/>-->
 
         <ImageButton
             android:id="@+id/shareBtn"
