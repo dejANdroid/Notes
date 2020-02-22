@@ -86,7 +86,7 @@ public class ReadNoteActivity extends AppCompatActivity {
 
                 DataBase.getNoteDbInstance(ReadNoteActivity.this).myDao().updateNote(note);
 
-                Toast toast=Toast.makeText(ReadNoteActivity.this, "Note is saved", Toast.LENGTH_SHORT);
+                Toast toast=Toast.makeText(ReadNoteActivity.this, "Note is updated", Toast.LENGTH_SHORT);
                 View toastView=toast.getView();
 
                 TextView toastMessage = toastView.findViewById(android.R.id.message);

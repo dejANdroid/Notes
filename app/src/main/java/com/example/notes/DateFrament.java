@@ -35,11 +35,11 @@ import java.util.Calendar;
 
 public class DateFrament extends Fragment {
 
-    private int gethour;
-    private int getminutes;
-    private int getyear;
-    private int getmonth;
-    private int getday;
+    private int get_hour;
+    private int get_minutes;
+    private int get_year;
+    private int get_month;
+    private int get_day;
     private String noteText;
     private String dateText;
     private long id;
@@ -60,8 +60,8 @@ public class DateFrament extends Fragment {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 
-                gethour = hourOfDay;
-                getminutes = minute;
+                get_hour = hourOfDay;
+                get_minutes = minute;
             }
         });
 
@@ -69,9 +69,9 @@ public class DateFrament extends Fragment {
             date.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
                 @Override
                 public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    getyear = year;
-                    getmonth = monthOfYear;
-                    getday = dayOfMonth;
+                    get_year = year;
+                    get_month = monthOfYear;
+                    get_day = dayOfMonth;
                 }
             });
         }
@@ -130,27 +130,28 @@ public class DateFrament extends Fragment {
         intent.putExtra("DATE_TEXT", dateText);
         intent.putExtra("ID", id);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), (int) id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent
+                .getBroadcast(getContext(), (int) id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (alarmManager != null) {
 
-            if (getmonth == 0 || getday == 0) {
+            if (get_month == 0 || get_day == 0) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(System.currentTimeMillis());
                 calendar.get(Calendar.YEAR);
                 calendar.get(Calendar.MONTH);
                 calendar.get(Calendar.DAY_OF_MONTH);
-                calendar.set(Calendar.HOUR_OF_DAY, gethour);
-                calendar.set(Calendar.MINUTE, getminutes);
+                calendar.set(Calendar.HOUR_OF_DAY, get_hour);
+                calendar.set(Calendar.MINUTE, get_minutes);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
             } else {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(System.currentTimeMillis());
-                calendar.set(Calendar.YEAR, getyear);
-                calendar.set(Calendar.MONTH, getmonth);
-                calendar.set(Calendar.DAY_OF_MONTH, getday);
-                calendar.set(Calendar.HOUR_OF_DAY, gethour);
-                calendar.set(Calendar.MINUTE, getminutes);
+                calendar.set(Calendar.YEAR, get_year);
+                calendar.set(Calendar.MONTH, get_month);
+                calendar.set(Calendar.DAY_OF_MONTH, get_day);
+                calendar.set(Calendar.HOUR_OF_DAY, get_hour);
+                calendar.set(Calendar.MINUTE, get_minutes);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
             }
         }

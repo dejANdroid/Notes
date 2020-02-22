@@ -137,6 +137,7 @@ public class FragmentAllNotes extends Fragment implements CustomListenerGetNote 
             });
 
             public void setItemDelete(MenuItem itemDelete) {
+
                 this.itemDelete = itemDelete;
             }
         });

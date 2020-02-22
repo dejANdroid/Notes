@@ -4,22 +4,18 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
-import androidx.room.Database;
-
-import com.example.notes.RoomDb.DataBase;
-import com.example.notes.model.Note;
 
 import java.util.Random;
 
 public class NotificationReciever extends BroadcastReceiver {
 
-    public static final String CHANNEL_ID = "channel_id";int randomId;
+    public static final String CHANNEL_ID = "channel_id";
+    int randomId;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -52,7 +48,7 @@ public class NotificationReciever extends BroadcastReceiver {
         backIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         final PendingIntent resultPendingIntent = PendingIntent.getActivities(
                 context, randomId,
-                new Intent[]{backIntent,openNotification}, PendingIntent.FLAG_ONE_SHOT);
+                new Intent[]{backIntent, openNotification}, PendingIntent.FLAG_ONE_SHOT);
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentTitle("Note Reminder !")
